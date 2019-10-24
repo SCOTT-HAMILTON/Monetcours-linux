@@ -1,0 +1,15 @@
+body {
+	background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
+} 
+
+.leftlist
+{
+	float: left;
+	text-align: left;
+	list-style: none;
+}​
+
+.rightlist {
+	position: absolute;
+	right: 0;
+}

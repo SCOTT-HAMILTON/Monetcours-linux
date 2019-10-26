@@ -91,19 +91,20 @@ def list_images(path):
 threads = []
 print ("argv : "+sys.argv[0])
 sample_subject_webpage_path_list = []
-with p,_ = os.path.split(sys.argv[0]):
-    sample_subject_webpage_path_list.append(p+"/sample_subject_webpage.html")
+p,_ = os.path.split(sys.argv[0])
+sample_subject_webpage_path_list.append(p+"/sample_subject_webpage.html")
 
-sample_subject_webpage_path_list.append("/usr/lib/sample_subject_webpage.html")
+sample_subject_webpage_path_list.append("/usr/lib/monetcours/sample_subject_webpage.html")
 
 for sample_subject_webpage_path in sample_subject_webpage_path_list:
     if not os.path.exists(sample_subject_webpage_path):
         continue
+    break
 if not os.path.exists(sample_subject_webpage_path):
     print("File sample_subject_webpage.html not found in paths : ")
     for path in sample_subject_webpage_path_list:
         print(" - '{}'".format(path))
-    return 1
+    exit(1)
 
 print ("sample pages path : "+sample_subject_webpage_path)
 for line in sys.stdin:

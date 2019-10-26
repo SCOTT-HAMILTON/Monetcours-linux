@@ -37,8 +37,8 @@ def gen_files_list(files, prefix=""):
         files_link_content += buff +'\n'
     return files_link_content 
 
-def generate_content(matiere, pdfs, images, file_path, configs=None):
-    content = Path("sample_subject_webpage.html").read_text() 
+def generate_content(sample_subject_webpage_path, matiere, pdfs, images, file_path, configs=None):
+    content = Path(sample_subject_webpage_path).read_text() 
 
     auth = "The author"
     desc = "The description"
@@ -89,14 +89,17 @@ def list_images(path):
     return files
 
 threads = []
-
+print ("argv : "+sys.argv[0])
+sample_subject_webpage_path,_ = os.path.split(sys.argv[0])
+sample_subject_webpage_path += "/sample_subject_webpage.html"
+print ("sample pages path : "+sample_subject_webpage_path)
 for line in sys.stdin:
     mat = line.strip()
     print("args : ", mat)
     file_path = "./"+mat+"/index.html"
     pdfs = list_pdfs("./"+mat)
     images = list_images("./"+mat+"/images")
-    thread = threading.Thread(target=generate_content, args=(mat, pdfs, images, file_path, load_config("./"+mat+"/info.yaml")))
+    thread = threading.Thread(target=generate_content, args=(sample_subject_webpage_path, mat, pdfs, images, file_path, load_config("./"+mat+"/info.yaml")))
     thread.start()
     threads.append(thread)
 

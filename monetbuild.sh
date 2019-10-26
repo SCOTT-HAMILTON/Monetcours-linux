@@ -35,14 +35,15 @@ if [ ! -d "$1" ] ; then
 	exit 0
 fi
 
+
 cd "$1"
 echo "Building ..."
 
 function build(){
-	./clean_names.sh && 
-	./generate_darkmode_pdfs.sh &&
-	./make_subject_webpages.sh &&
-	./make_zip_of_all_pdfs.sh
+	clean_names.sh && 
+	generate_darkmode_pdfs.sh &&
+	make_subject_webpages.sh &&
+	make_zip_of_all_pdfs.sh
 }
 
 RED='\033[0;31m'

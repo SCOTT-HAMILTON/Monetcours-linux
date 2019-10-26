@@ -39,6 +39,8 @@ fi
 cd "$1"
 echo "Building ..."
 
+export PATH=$PATH:/usr/lib/monetcours
+
 function build(){
 	clean_names.sh && 
 	generate_darkmode_pdfs.sh &&

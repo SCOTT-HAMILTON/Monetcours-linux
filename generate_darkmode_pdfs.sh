@@ -11,4 +11,4 @@ echo $invert_pdf_colors_path
 echo "PWD : $(pwd)"
 echo "Generating dark pdfs..."
 find "$(pwd)" -iname "*-dark*.pdf" | xargs -r -n1 -r -t -I{} rm "{}"
-find "$(pwd)" -name "*.pdf" | awk '{print "\""$0"\"\n\""substr($0,0,length($0)-4)"-dark.pdf\""}' | parallel --xargs -l 2 $invert_pdf_colors_path
+find "$(pwd)" -name "*.pdf" | awk '{print "\""$0"\"\n\""substr($0,0,length($0)-4)"-dark.pdf\""}' | xargs -n2 -L2 -r -P 0 $invert_pdf_colors_path

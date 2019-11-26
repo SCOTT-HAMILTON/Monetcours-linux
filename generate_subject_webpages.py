@@ -1,9 +1,14 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 
 import sys
 import os
 import re
-import yaml
+
+try:
+    import yaml
+except ModuleNotFoundError:
+    import pyyaml
+
 import threading
 from pathlib import Path
 
@@ -89,12 +94,18 @@ def list_images(path):
     return files
 
 threads = []
+print("ARGC : "+str(len(sys.argv)))
+for i in range(0,len(sys.argv)):
+    print("arg["+str(i)+"] : '"+sys.argv[i]+"'")
 print ("argv : "+sys.argv[0])
 sample_subject_webpage_path_list = []
 p,_ = os.path.split(sys.argv[0])
 sample_subject_webpage_path_list.append(p+"/sample_subject_webpage.html")
 
-sample_subject_webpage_path_list.append("/usr/lib/monetcours/sample_subject_webpage.html")
+sample_subject_webpage_path_list.append("/usr/share/monetcours/sample_subject_webpage.html")
+
+if len(sys.argv) > 2 and sys.argv[1] == "--test":
+    sample_subject_webpage_path_list.append(sys.argv[2])
 
 for sample_subject_webpage_path in sample_subject_webpage_path_list:
     if not os.path.exists(sample_subject_webpage_path):

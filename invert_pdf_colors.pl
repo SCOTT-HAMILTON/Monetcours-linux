@@ -1,4 +1,4 @@
-#!/usr/bin/cperl
+#!/usr/bin/perl
 use strict;
 use warnings;
 use PDF::API2;

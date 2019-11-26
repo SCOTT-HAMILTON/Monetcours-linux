@@ -39,7 +39,7 @@ fi
 cd "$1"
 echo "Building ..."
 
-export PATH=$PATH:/usr/lib/monetcours
+export PATH=$PATH:/usr/share/monetcours
 
 function build(){
 	clean_names.sh && 
